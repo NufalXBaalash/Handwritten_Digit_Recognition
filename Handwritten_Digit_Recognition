@@ -2,6 +2,8 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow import keras
+from matplotlib import style
+style.use("dark_background")
 
 # Download the data
 df = tf.keras.datasets.mnist
@@ -28,23 +30,38 @@ model.compile(
 )
 
 # Train the model
-model.fit(train_images,train_labels, epochs=10)
-
+history = model.fit(train_images,train_labels, epochs=10)
+history.history.keys()
 # Testing the model
 test_loss , test_acc = model.evaluate(test_images , test_labels , verbose=1)
 print('Test accuracy:', test_acc)
 
 # Making predictions
-
 pred = int(input("Choose a number honey : "))
 label = str(class_names[test_labels[pred]])
 predictions = model.predict(test_images)
 print(class_names[np.argmax(predictions[pred])])
 guess = class_names[np.argmax(predictions[pred])]
-plt.figure()
-plt.imshow(test_images[pred])
+
+# PREDECTION
+plt.figure(1)
+plt.imshow(test_images[pred] , cmap='gray')
 plt.title("Expected: " + label)
 plt.xlabel("Guess: " + guess)
-plt.colorbar()
 plt.grid(False)
+
+# LOSS AND ACCURACY
+plt.figure(2)
+plt.plot(history.history['accuracy'] , color='red')
+plt.title("Model Accuracy")
+plt.xlabel("epoch")
+plt.ylabel("accuracy")
+plt.legend(['train'], loc='upper left')
+
+plt.figure(3)
+plt.plot(history.history['loss'],  color='red')
+plt.title("Model LOSS")
+plt.xlabel("epoch")
+plt.ylabel("loss")
+plt.legend(['train'], loc='upper left')
 plt.show()
