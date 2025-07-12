@@ -6,8 +6,6 @@
 
 A deep learning implementation for handwritten digit recognition using the classic MNIST dataset. This project demonstrates building, training, and evaluating a neural network with TensorFlow/Keras, including interactive predictions and performance visualization.
 
-![Training Metrics](https://via.placeholder.com/800x400?text=Training+Accuracy+%26+Loss+Graphs)  
-*(Example training graphs - replace with actual screenshot)*
 
 ## ✨ Features
 
@@ -87,4 +85,3 @@ Test Accuracy:      ~97.5%
 Enter test sample index (0-9999): 531
 ✅ Prediction: 7 | Actual: 7
 ```
-![Prediction Visualization](https://via.placeholder.com/300x150?text=Sample+531+Visualization)
